@@ -12,42 +12,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const maestros_1 = __importDefault(require("../../domain/models/maestros"));
-const maestrosSchema_1 = require("./schemas/maestrosSchema");
-class MongoMaestrosRepository {
-    save(maestros) {
+const duendes_1 = __importDefault(require("../../domain/models/duendes"));
+const duendesSchema_1 = require("./schemas/duendesSchema");
+class MongoDuendesRepository {
+    save(duendes) {
         return __awaiter(this, void 0, void 0, function* () {
-            const maestrosModel = new maestrosSchema_1.MaestrosModel(maestros);
-            const savedMaestros = yield maestrosModel.save();
-            return new maestros_1.default(savedMaestros.id, savedMaestros.name, savedMaestros.description);
+            const duendesModel = new duendesSchema_1.DuendesModel(duendes);
+            const savedDuendes = yield duendesModel.save();
+            return new duendes_1.default(savedDuendes.id, savedDuendes.name, savedDuendes.description);
         });
     }
     findById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const maestros = yield maestrosSchema_1.MaestrosModel.findById(id);
-            if (!maestros)
+            const duendes = yield duendesSchema_1.DuendesModel.findById(id);
+            if (!duendes)
                 return null;
-            return new maestros_1.default(maestros.id, maestros.name, maestros.description);
+            return new duendes_1.default(duendes.id, duendes.name, duendes.description);
         });
     }
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            const maestroses = yield maestrosSchema_1.MaestrosModel.find();
-            return maestroses.map(maestros => new maestros_1.default(maestros.id, maestros.name, maestros.description));
+            const duendeses = yield duendesSchema_1.DuendesModel.find();
+            return duendeses.map(duendes => new duendes_1.default(duendes.id, duendes.name, duendes.description));
         });
     }
-    update(maestros) {
+    update(duendes) {
         return __awaiter(this, void 0, void 0, function* () {
-            const updatedMaestros = yield maestrosSchema_1.MaestrosModel.findByIdAndUpdate(maestros.id, maestros, { new: true });
-            if (!updatedMaestros)
-                throw new Error('Maestros not found');
-            return new maestros_1.default(updatedMaestros.id, updatedMaestros.name, updatedMaestros.description);
+            const updatedDuendes = yield duendesSchema_1.DuendesModel.findByIdAndUpdate(duendes.id, duendes, { new: true });
+            if (!updatedDuendes)
+                throw new Error('Duendes not found');
+            return new duendes_1.default(updatedDuendes.id, updatedDuendes.name, updatedDuendes.description);
         });
     }
     deleteById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield maestrosSchema_1.MaestrosModel.findByIdAndDelete(id);
+            yield duendesSchema_1.DuendesModel.findByIdAndDelete(id);
         });
     }
 }
-exports.default = MongoMaestrosRepository;
+exports.default = MongoDuendesRepository;

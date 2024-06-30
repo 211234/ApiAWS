@@ -7,25 +7,25 @@ import connectMySQL from './database/mysqlConnection';
 import { S3StorageRepository } from '../adapters/repositories/s3StorageRepository';
 import { LocalStorageRepository } from '../adapters/repositories/localStorageRepository';
 import { IStorageRepository } from '../domain/repositories/IStorageRepository';
-import { IMaestrosRepository } from '../domain/repositories/IMaestrosRepository';
-import MongoMaestrosRepository from '../adapters/repositories/mongoMaestrosRepository';
-import MySQLMaestrosRepository from '../adapters/repositories/mysqlMaestrosRepository';
-import { MaestrosService } from '../application/services/maestrosService';
+import { IDuendesRepository } from '../domain/repositories/IDuendesRepository';
+import MongoDuendesRepository from '../adapters/repositories/mongoDuendesRepository';
+import MySQLDuendesRepository from '../adapters/repositories/mysqlDuendesRepository';
+import { DuendesService } from '../application/services/duendesService';
 
 const useMongoDB: boolean = process.env.USE_MONGODB === 'true';
 const useS3: boolean = process.env.USE_S3 === 'true';
 
 let alumnoRepository: IAlumnoRepository;
-let maestrosRepository: IMaestrosRepository;
+let duendesRepository: IDuendesRepository;
 
 if (useMongoDB) {
     connectMongoDB();
     alumnoRepository = new MongoAlumnoRepository();
-    maestrosRepository = new MongoMaestrosRepository();
+    duendesRepository = new MongoDuendesRepository();
 } else {
     connectMySQL();
     alumnoRepository = new MySQLAlumnoRepository();
-    maestrosRepository = new MySQLMaestrosRepository();
+    duendesRepository = new MySQLDuendesRepository();
 }
 
 let storageRepository: IStorageRepository;
@@ -37,6 +37,6 @@ if (useS3) {
 }
 
 const alumnoService = new AlumnoService(alumnoRepository);
-const maestrosService = new MaestrosService(maestrosRepository);
+const duendesService = new DuendesService(duendesRepository);
 
-export { alumnoService, maestrosService, storageRepository };
+export { alumnoService, duendesService, storageRepository };

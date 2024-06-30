@@ -23,11 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MaestrosModel = void 0;
+exports.DuendesModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const maestrosSchema = new mongoose_1.Schema({
+const duendesSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
     // Define más campos aquí si es necesario
 });
-exports.MaestrosModel = mongoose_1.default.model('Maestros', maestrosSchema);
+exports.DuendesModel = mongoose_1.default.model('Duendes', duendesSchema);

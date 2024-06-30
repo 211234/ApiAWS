@@ -1,12 +1,12 @@
 import express from 'express';
 import { createAlumno, getAlumnoById, getAllAlumnos, updateAlumno, deleteAlumnoById } from '../../adapters/controllers/alumnoController';
-import { createMaestros, getMaestrosById, getAllMaestroses, updateMaestros, deleteMaestrosById } from '../../adapters/controllers/maestrosController'; 
+import { createDuendes, getDuendesById, getAllDuendeses, updateDuendes, deleteDuendesById } from '../../adapters/controllers/duendesController'; 
 import { upload } from '../../infrastructure/config/multerConfig';
 import { StorageController } from '../../adapters/controllers/storageController';
 import { storageRepository } from '../../infrastructure/diContainer';
 import { StorageService } from '../../application/services/storageService';
-import { MaestrosService } from '../../application/services/maestrosService'; 
-import { maestrosService } from '../../infrastructure/diContainer'; 
+import { DuendesService } from '../../application/services/duendesService'; 
+import { duendesService } from '../../infrastructure/diContainer'; 
 
 const app = express();
 app.use(express.json());
@@ -21,10 +21,10 @@ app.get('/api/alumnos', getAllAlumnos);
 app.put('/api/alumnos/:id', updateAlumno);
 app.delete('/api/alumnos/:id', deleteAlumnoById);
 
-app.post('/api/maestroses', createMaestros); 
-app.get('/api/maestroses/:id', getMaestrosById); 
-app.get('/api/maestroses', getAllMaestroses); 
-app.put('/api/maestroses/:id', updateMaestros); 
-app.delete('/api/maestroses/:id', deleteMaestrosById); 
+app.post('/api/duendeses', createDuendes); 
+app.get('/api/duendeses/:id', getDuendesById); 
+app.get('/api/duendeses', getAllDuendeses); 
+app.put('/api/duendeses/:id', updateDuendes); 
+app.delete('/api/duendeses/:id', deleteDuendesById); 
 
 export default app;

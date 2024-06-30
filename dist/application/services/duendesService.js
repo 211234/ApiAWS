@@ -12,38 +12,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MaestrosService = void 0;
-const maestros_1 = __importDefault(require("../../domain/models/maestros"));
-class MaestrosService {
-    constructor(maestrosRepository) {
-        MaestrosService.maestrosRepository = maestrosRepository;
+exports.DuendesService = void 0;
+const duendes_1 = __importDefault(require("../../domain/models/duendes"));
+class DuendesService {
+    constructor(duendesRepository) {
+        DuendesService.duendesRepository = duendesRepository;
     }
-    static createMaestros(name, description) {
+    static createDuendes(name, description) {
         return __awaiter(this, void 0, void 0, function* () {
-            const maestros = new maestros_1.default(null, name, description);
-            return yield MaestrosService.maestrosRepository.save(maestros);
+            const duendes = new duendes_1.default(null, name, description);
+            return yield DuendesService.duendesRepository.save(duendes);
         });
     }
-    static getMaestrosById(id) {
+    static getDuendesById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield MaestrosService.maestrosRepository.findById(id);
+            return yield DuendesService.duendesRepository.findById(id);
         });
     }
-    static getAllMaestroses() {
+    static getAllDuendeses() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield MaestrosService.maestrosRepository.findAll();
+            return yield DuendesService.duendesRepository.findAll();
         });
     }
-    static updateMaestros(id, name, description) {
+    static updateDuendes(id, name, description) {
         return __awaiter(this, void 0, void 0, function* () {
-            const maestros = new maestros_1.default(id, name, description);
-            return yield MaestrosService.maestrosRepository.update(maestros);
+            const duendes = new duendes_1.default(id, name, description);
+            return yield DuendesService.duendesRepository.update(duendes);
         });
     }
-    static deleteMaestrosById(id) {
+    static deleteDuendesById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield MaestrosService.maestrosRepository.deleteById(id);
+            yield DuendesService.duendesRepository.deleteById(id);
         });
     }
 }
-exports.MaestrosService = MaestrosService;
+exports.DuendesService = DuendesService;

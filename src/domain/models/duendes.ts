@@ -1,4 +1,4 @@
-export default class Maestros {
+export default class Duendes {
     id: string | null;
     name: string;
     description: string;
