@@ -7,25 +7,25 @@ import connectMySQL from './database/mysqlConnection';
 import { S3StorageRepository } from '../adapters/repositories/s3StorageRepository';
 import { LocalStorageRepository } from '../adapters/repositories/localStorageRepository';
 import { IStorageRepository } from '../domain/repositories/IStorageRepository';
-import { IDuendesRepository } from '../domain/repositories/IDuendesRepository';
-import MongoDuendesRepository from '../adapters/repositories/mongoDuendesRepository';
-import MySQLDuendesRepository from '../adapters/repositories/mysqlDuendesRepository';
-import { DuendesService } from '../application/services/duendesService';
+import { IMateriaRepository } from '../domain/repositories/IMateriaRepository';
+import MongoMateriaRepository from '../adapters/repositories/mongoMateriaRepository';
+import MySQLMateriaRepository from '../adapters/repositories/mysqlMateriaRepository';
+import { MateriaService } from '../application/services/materiaService';
 
 const useMongoDB: boolean = process.env.USE_MONGODB === 'true';
 const useS3: boolean = process.env.USE_S3 === 'true';
 
 let alumnoRepository: IAlumnoRepository;
-let duendesRepository: IDuendesRepository;
+let duendesRepository: IMateriaRepository;
 
 if (useMongoDB) {
     connectMongoDB();
     alumnoRepository = new MongoAlumnoRepository();
-    duendesRepository = new MongoDuendesRepository();
+    duendesRepository = new MongoMateriaRepository();
 } else {
     connectMySQL();
     alumnoRepository = new MySQLAlumnoRepository();
-    duendesRepository = new MySQLDuendesRepository();
+    duendesRepository = new MySQLMateriaRepository();
 }
 
 let storageRepository: IStorageRepository;
@@ -37,6 +37,6 @@ if (useS3) {
 }
 
 const alumnoService = new AlumnoService(alumnoRepository);
-const duendesService = new DuendesService(duendesRepository);
+const duendesService = new MateriaService(duendesRepository);
 
 export { alumnoService, duendesService, storageRepository };

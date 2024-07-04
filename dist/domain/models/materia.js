@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Duendes {
+class Materia {
     constructor(id, name, description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 }
-exports.default = Duendes;
+exports.default = Materia;

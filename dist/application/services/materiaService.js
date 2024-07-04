@@ -12,38 +12,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DuendesService = void 0;
-const duendes_1 = __importDefault(require("../../domain/models/duendes"));
-class DuendesService {
+exports.MateriaService = void 0;
+const materia_1 = __importDefault(require("../../domain/models/materia"));
+class MateriaService {
     constructor(duendesRepository) {
-        DuendesService.duendesRepository = duendesRepository;
+        MateriaService.duendesRepository = duendesRepository;
     }
-    static createDuendes(name, description) {
+    static createMateria(name, description) {
         return __awaiter(this, void 0, void 0, function* () {
-            const duendes = new duendes_1.default(null, name, description);
-            return yield DuendesService.duendesRepository.save(duendes);
+            const materia = new materia_1.default(null, name, description);
+            return yield MateriaService.duendesRepository.save(materia);
         });
     }
-    static getDuendesById(id) {
+    static getMateriaById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield DuendesService.duendesRepository.findById(id);
+            return yield MateriaService.duendesRepository.findById(id);
         });
     }
-    static getAllDuendeses() {
+    static getAllMateriaes() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield DuendesService.duendesRepository.findAll();
+            return yield MateriaService.duendesRepository.findAll();
         });
     }
-    static updateDuendes(id, name, description) {
+    static updateMateria(id, name, description) {
         return __awaiter(this, void 0, void 0, function* () {
-            const duendes = new duendes_1.default(id, name, description);
-            return yield DuendesService.duendesRepository.update(duendes);
+            const materia = new materia_1.default(id, name, description);
+            return yield MateriaService.duendesRepository.update(materia);
         });
     }
-    static deleteDuendesById(id) {
+    static deleteMateriaById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield DuendesService.duendesRepository.deleteById(id);
+            yield MateriaService.duendesRepository.deleteById(id);
         });
     }
 }
-exports.DuendesService = DuendesService;
+exports.MateriaService = MateriaService;

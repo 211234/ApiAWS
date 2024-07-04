@@ -11,9 +11,9 @@ const mongoConnection_1 = __importDefault(require("./database/mongoConnection"))
 const mysqlConnection_1 = __importDefault(require("./database/mysqlConnection"));
 const s3StorageRepository_1 = require("../adapters/repositories/s3StorageRepository");
 const localStorageRepository_1 = require("../adapters/repositories/localStorageRepository");
-const mongoDuendesRepository_1 = __importDefault(require("../adapters/repositories/mongoDuendesRepository"));
-const mysqlDuendesRepository_1 = __importDefault(require("../adapters/repositories/mysqlDuendesRepository"));
-const duendesService_1 = require("../application/services/duendesService");
+const mongoMateriaRepository_1 = __importDefault(require("../adapters/repositories/mongoMateriaRepository"));
+const mysqlMateriaRepository_1 = __importDefault(require("../adapters/repositories/mysqlMateriaRepository"));
+const materiaService_1 = require("../application/services/materiaService");
 const useMongoDB = process.env.USE_MONGODB === 'true';
 const useS3 = process.env.USE_S3 === 'true';
 let alumnoRepository;
@@ -21,12 +21,12 @@ let duendesRepository;
 if (useMongoDB) {
     (0, mongoConnection_1.default)();
     alumnoRepository = new mongoAlumnoRepository_1.default();
-    duendesRepository = new mongoDuendesRepository_1.default();
+    duendesRepository = new mongoMateriaRepository_1.default();
 }
 else {
     (0, mysqlConnection_1.default)();
     alumnoRepository = new mysqlAlumnoRepository_1.default();
-    duendesRepository = new mysqlDuendesRepository_1.default();
+    duendesRepository = new mysqlMateriaRepository_1.default();
 }
 let storageRepository;
 if (useS3) {
@@ -37,5 +37,5 @@ else {
 }
 const alumnoService = new alumnoService_1.AlumnoService(alumnoRepository);
 exports.alumnoService = alumnoService;
-const duendesService = new duendesService_1.DuendesService(duendesRepository);
+const duendesService = new materiaService_1.MateriaService(duendesRepository);
 exports.duendesService = duendesService;

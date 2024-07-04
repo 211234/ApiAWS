@@ -12,42 +12,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const duendes_1 = __importDefault(require("../../domain/models/duendes"));
-const duendesSchema_1 = require("./schemas/duendesSchema");
-class MongoDuendesRepository {
-    save(duendes) {
+const materia_1 = __importDefault(require("../../domain/models/materia"));
+const materiaSchema_1 = require("./schemas/materiaSchema");
+class MongoMateriaRepository {
+    save(materia) {
         return __awaiter(this, void 0, void 0, function* () {
-            const duendesModel = new duendesSchema_1.DuendesModel(duendes);
-            const savedDuendes = yield duendesModel.save();
-            return new duendes_1.default(savedDuendes.id, savedDuendes.name, savedDuendes.description);
+            const duendesModel = new materiaSchema_1.MateriaModel(materia);
+            const savedMateria = yield duendesModel.save();
+            return new materia_1.default(savedMateria.id, savedMateria.name, savedMateria.description);
         });
     }
     findById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const duendes = yield duendesSchema_1.DuendesModel.findById(id);
-            if (!duendes)
+            const materia = yield materiaSchema_1.MateriaModel.findById(id);
+            if (!materia)
                 return null;
-            return new duendes_1.default(duendes.id, duendes.name, duendes.description);
+            return new materia_1.default(materia.id, materia.name, materia.description);
         });
     }
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            const duendeses = yield duendesSchema_1.DuendesModel.find();
-            return duendeses.map(duendes => new duendes_1.default(duendes.id, duendes.name, duendes.description));
+            const duendeses = yield materiaSchema_1.MateriaModel.find();
+            return duendeses.map(materia => new materia_1.default(materia.id, materia.name, materia.description));
         });
     }
-    update(duendes) {
+    update(materia) {
         return __awaiter(this, void 0, void 0, function* () {
-            const updatedDuendes = yield duendesSchema_1.DuendesModel.findByIdAndUpdate(duendes.id, duendes, { new: true });
-            if (!updatedDuendes)
-                throw new Error('Duendes not found');
-            return new duendes_1.default(updatedDuendes.id, updatedDuendes.name, updatedDuendes.description);
+            const updatedMateria = yield materiaSchema_1.MateriaModel.findByIdAndUpdate(materia.id, materia, { new: true });
+            if (!updatedMateria)
+                throw new Error('materia not found');
+            return new materia_1.default(updatedMateria.id, updatedMateria.name, updatedMateria.description);
         });
     }
     deleteById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield duendesSchema_1.DuendesModel.findByIdAndDelete(id);
+            yield materiaSchema_1.MateriaModel.findByIdAndDelete(id);
         });
     }
 }
-exports.default = MongoDuendesRepository;
+exports.default = MongoMateriaRepository;

@@ -1,4 +1,4 @@
-export default class Duendes {
+export default class Materia {
     id: string | null;
     name: string;
     description: string;

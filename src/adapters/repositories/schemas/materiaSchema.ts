@@ -1,15 +1,15 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-export interface IDuendesDocument extends Document {
+export interface IMateriaDocument extends Document {
     name: string;
     description: string;
     // Puedes añadir más campos según sea necesario
 }
 
-const duendesSchema = new Schema({
+const materiaSchema = new Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
     // Define más campos aquí si es necesario
 });
 
-export const DuendesModel = mongoose.model<IDuendesDocument>('Duendes', duendesSchema);
+export const MateriaModel = mongoose.model<IMateriaDocument>('materia', materiaSchema);

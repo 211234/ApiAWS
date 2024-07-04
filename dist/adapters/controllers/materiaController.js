@@ -10,65 +10,65 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteDuendesById = exports.updateDuendes = exports.getAllDuendeses = exports.getDuendesById = exports.createDuendes = void 0;
-const duendesService_1 = require("../../application/services/duendesService"); // Verifica la importación aquí
-const createDuendes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.deleteMateriaById = exports.updateMateria = exports.getAllMateriaes = exports.getMateriaById = exports.createMateria = void 0;
+const materiaService_1 = require("../../application/services/materiaService"); // Verifica la importación aquí
+const createMateria = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, description } = req.body;
     try {
-        const duendes = yield duendesService_1.DuendesService.createDuendes(name, description);
-        res.status(201).json(duendes);
+        const materia = yield materiaService_1.MateriaService.createMateria(name, description);
+        res.status(201).json(materia);
     }
     catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
-exports.createDuendes = createDuendes;
-const getDuendesById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.createMateria = createMateria;
+const getMateriaById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const duendes = yield duendesService_1.DuendesService.getDuendesById(id);
-        if (!duendes) {
-            res.status(404).json({ message: 'Duendes not found' });
+        const materia = yield materiaService_1.MateriaService.getMateriaById(id);
+        if (!materia) {
+            res.status(404).json({ message: 'materia not found' });
         }
         else {
-            res.status(200).json(duendes);
+            res.status(200).json(materia);
         }
     }
     catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
-exports.getDuendesById = getDuendesById;
-const getAllDuendeses = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getMateriaById = getMateriaById;
+const getAllMateriaes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const duendeses = yield duendesService_1.DuendesService.getAllDuendeses();
+        const duendeses = yield materiaService_1.MateriaService.getAllMateriaes();
         res.status(200).json(duendeses);
     }
     catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
-exports.getAllDuendeses = getAllDuendeses;
-const updateDuendes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getAllMateriaes = getAllMateriaes;
+const updateMateria = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const { name, description } = req.body;
     try {
-        const updatedDuendes = yield duendesService_1.DuendesService.updateDuendes(id, name, description);
-        res.status(200).json(updatedDuendes);
+        const updatedMateria = yield materiaService_1.MateriaService.updateMateria(id, name, description);
+        res.status(200).json(updatedMateria);
     }
     catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
-exports.updateDuendes = updateDuendes;
-const deleteDuendesById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.updateMateria = updateMateria;
+const deleteMateriaById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        yield duendesService_1.DuendesService.deleteDuendesById(id);
+        yield materiaService_1.MateriaService.deleteMateriaById(id);
         res.status(204).send();
     }
     catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
-exports.deleteDuendesById = deleteDuendesById;
+exports.deleteMateriaById = deleteMateriaById;
