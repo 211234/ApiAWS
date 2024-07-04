@@ -21,10 +21,10 @@ app.get('/api/alumnos', getAllAlumnos);
 app.put('/api/alumnos/:id', updateAlumno);
 app.delete('/api/alumnos/:id', deleteAlumnoById);
 
-app.post('/api/duendeses', createMateria); 
-app.get('/api/duendeses/:id', getMateriaById); 
-app.get('/api/duendeses', getAllMateriaes); 
-app.put('/api/duendeses/:id', updateMateria); 
-app.delete('/api/duendeses/:id', deleteMateriaById); 
+app.post('/api/materia', createMateria); 
+app.get('/api/materia/:id', getMateriaById); 
+app.get('/api/materia', getAllMateriaes); 
+app.put('/api/materia/:id', updateMateria); 
+app.delete('/api/materia/:id', deleteMateriaById); 
 
 export default app;
