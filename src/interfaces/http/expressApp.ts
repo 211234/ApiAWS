@@ -5,8 +5,8 @@ import { upload } from '../../infrastructure/config/multerConfig';
 import { StorageController } from '../../adapters/controllers/storageController';
 import { storageRepository } from '../../infrastructure/diContainer';
 import { StorageService } from '../../application/services/storageService';
-import { MateriaService } from '../../application/services/materiaService'; 
-import { duendesService } from '../../infrastructure/diContainer'; 
+import { MateriaService } from '../../application/services/materiaService';
+import { materiaService } from '../../infrastructure/diContainer'; 
 
 const app = express();
 app.use(express.json());

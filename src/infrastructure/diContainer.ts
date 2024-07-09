@@ -16,16 +16,16 @@ const useMongoDB: boolean = process.env.USE_MONGODB === 'true';
 const useS3: boolean = process.env.USE_S3 === 'true';
 
 let alumnoRepository: IAlumnoRepository;
-let duendesRepository: IMateriaRepository;
+let materiaRepository: IMateriaRepository;
 
 if (useMongoDB) {
     connectMongoDB();
     alumnoRepository = new MongoAlumnoRepository();
-    duendesRepository = new MongoMateriaRepository();
+    materiaRepository = new MongoMateriaRepository();
 } else {
     connectMySQL();
     alumnoRepository = new MySQLAlumnoRepository();
-    duendesRepository = new MySQLMateriaRepository();
+    materiaRepository = new MySQLMateriaRepository();
 }
 
 let storageRepository: IStorageRepository;
@@ -37,6 +37,6 @@ if (useS3) {
 }
 
 const alumnoService = new AlumnoService(alumnoRepository);
-const duendesService = new MateriaService(duendesRepository);
+const materiaService = new MateriaService(materiaRepository);
 
-export { alumnoService, duendesService, storageRepository };
+export { alumnoService, materiaService, storageRepository };

@@ -4,8 +4,8 @@ import { IMateriaDocument, MateriaModel } from './schemas/materiaSchema';
 
 class MongoMateriaRepository implements IMateriaRepository {
     async save(materia: Materia): Promise<Materia> {
-        const duendesModel = new MateriaModel(materia);
-        const savedMateria = await duendesModel.save();
+        const materiaModel = new MateriaModel(materia);
+        const savedMateria = await materiaModel.save();
         return new Materia(savedMateria.id, savedMateria.name, savedMateria.description);
     }
 
@@ -16,8 +16,8 @@ class MongoMateriaRepository implements IMateriaRepository {
     }
 
     async findAll(): Promise<Materia[]> {
-        const duendeses: IMateriaDocument[] = await MateriaModel.find();
-        return duendeses.map(materia => new Materia(materia.id, materia.name, materia.description));
+        const materia: IMateriaDocument[] = await MateriaModel.find();
+        return materia.map(materia => new Materia(materia.id, materia.name, materia.description));
     }
 
     async update(materia: Materia): Promise<Materia> {
